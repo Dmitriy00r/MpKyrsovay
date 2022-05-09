@@ -21,9 +21,7 @@ namespace MpKurs1
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        public void AddDans()
         {
             database.openConnection();
             var ForName = textBox1.Text;
@@ -34,19 +32,120 @@ namespace MpKurs1
             var Position = textBox6.Text;
             int Oklad;
 
-            if (int.TryParse(textBox7.Text, out Oklad)) 
+            if (int.TryParse(textBox7.Text, out Oklad))
             {
-                var addQuery = $"insert into MpKyrsah_db (ForName, Pol, NameOtdela, DateOfBirth, DateOfPostyp, Position, Oklad) values('{ForName}', '{Pol}', '{NameOtdela}', '{DateOfBirth}', '{DateOfPostyp}', '{Position}', {Oklad})";
+                var addQuery = $"insert into MpKyrsah_db (ForName, Pol, NameOtdela, DateOfBirth, DateOfPostyp, Position, Oklad) values('{ForName}', " +
+                    $"'{Pol}', '{NameOtdela}', '{DateOfBirth}', '{DateOfPostyp}', '{Position}', {Oklad})";
 
                 var command = new SqlCommand(addQuery, database.getConnection());
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("Запись внесена!","Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Запись внесена!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 database.closeConnection();
             }
         }
+      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form11 add = new Form11();
+            AddDans();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Фамилия можно вводить только буквы! Попробуйте снова!");
+            }
+            e.Handled = true;
+                
+            
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Пол можно вводить только буквы! Попробуйте снова!");
+            }
+            e.Handled = true;
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Название отдела можно вводить только буквы! Попробуйте снова!");
+            }
+            e.Handled = true;
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Должность можно вводить только буквы! Попробуйте снова!");
+            }
+            e.Handled = true;
+         }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsNumber(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Дата рождения можно вводить только цифры! Попробуйте снова!");
+            }
+            e.Handled = true;
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsNumber(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Дата поступления можно вводить только цифры! Попробуйте снова!");
+            }
+            e.Handled = true;
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsNumber(e.KeyChar)) || (!string.IsNullOrEmpty(textBox1.Text)))
+            {
+                return;
+            }
+            else
+            {
+                MessageBox.Show("В поле Оклад можно вводить только цифры! Попробуйте снова!");
+            }
+            e.Handled = true;
+        }
+
     }
 }
