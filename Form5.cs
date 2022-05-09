@@ -12,8 +12,8 @@ namespace MpKurs1
 {
     public partial class Form5 : Form
     {
-        Form1.Stag j;
-        public Form5(Form1.Stag sender)
+        Form11.Stag j;
+        public Form5(Form11.Stag sender)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

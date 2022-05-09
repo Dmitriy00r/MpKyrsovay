@@ -18,18 +18,22 @@ namespace MpKurs1
     {
         Exicted, New, Modified, ModifiedNew, Deleted
     }
-    public partial class Form1 : Form
+    public partial class Form11 : Form
     {
         DataBase dataBase = new DataBase();
         int selectedRow;
 
         private string filename = string.Empty;
         private DataTableCollection tableCollection = null;
-        public Form1()
+        public DataGridView Grid
+        {
+            get { return dataGridView1; }
+        }
+        public Form11()
         {
             InitializeComponent();
         }
-        private void CreateColumns()
+        public void CreateColumns()
         {
             dataGridView1.Columns.Add("Number", "№");
             dataGridView1.Columns.Add("ForName", "Фамилия");
@@ -42,8 +46,20 @@ namespace MpKurs1
             dataGridView1.Columns.Add("IsNew", string.Empty);
             
         }
+        public void ClearDann()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+            textBox8.Text = "";
+                
+        }
 
-        private void ReadSingleRow(DataGridView ds, IDataRecord record)
+        public void ReadSingleRow(DataGridView ds, IDataRecord record)
         {
             var pattern = "dd.MM.yyyy";
             var birthDate = record.GetDateTime(4).ToString(pattern);
@@ -95,6 +111,7 @@ namespace MpKurs1
         private void button1_Click(object sender, EventArgs e)
         {
             RefreshDataGrid(dataGridView1);
+            ClearDann();
         }
         public void Search(DataGridView dgw)
         {
@@ -113,7 +130,7 @@ namespace MpKurs1
         {
             Search(dataGridView1);
         }
-        private void RemoveRow()
+        public void RemoveRow()
         {
             
 
@@ -164,6 +181,7 @@ namespace MpKurs1
         private void button3_Click(object sender, EventArgs e)
         {
             RemoveRow();
+            ClearDann();
         }
 
 
@@ -191,6 +209,7 @@ namespace MpKurs1
                 }
             }
 
+
     }
 
 
@@ -203,18 +222,17 @@ namespace MpKurs1
         private void button4_Click(object sender, EventArgs e)
         {
             Redact();
+            ClearDann();
         }
 
         private void стажРаботыВсехСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-           
+        {  
             Form3 add = new Form3();
             add.Show();
             MessageBox.Show("Стаж отображается в днях");
         }
 
-        private void среднийСтажРаботыСотрудниковЗаданногоОтделаToolStripMenuItem_Click(object sender, EventArgs e)
+        public void среднийСтажРаботыСотрудниковЗаданногоОтделаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             double SrednStag = 0;
             double result = 0;
@@ -302,6 +320,7 @@ namespace MpKurs1
             DataTable table = tableCollection[Convert.ToString(toolStripComboBox1.SelectedItem)];
             dataGridView1.DataSource = table;
         }
+ 
         public delegate void Stag(int stag, double moneyProc);
         
         public void RashetOklada(int stag, double moneyProc)
@@ -335,14 +354,110 @@ namespace MpKurs1
             Form5 add = new Form5(new Stag (RashetOklada));
             add.Show();
         }
-        public enum Pol
-        {
-            Мужской, Женский
-        }
         private void сToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form6 add = new Form6();
             add.Show();
+        }
+
+        private void сохранениеДанныхВФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+
+                    Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+                    Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+                    ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+                    ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+                    ExcelApp.Cells[1, 1] = "Number";
+                    ExcelApp.Cells[1, 2] = "ForName";
+                    ExcelApp.Cells[1, 3] = "Pol";
+                    ExcelApp.Cells[1, 4] = "NameOtdela";
+                    ExcelApp.Cells[1, 5] = "DateOfBirth";
+                    ExcelApp.Cells[1, 6] = "DateOfPostyp";
+                    ExcelApp.Cells[1, 7] = "Position";
+                    ExcelApp.Cells[1, 8] = "Oklad";
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            ExcelApp.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value;
+                        }
+                    }
+                    ExcelApp.AlertBeforeOverwriting = false;
+                    ExcelWorkBook.SaveAs(@"D:\ResKurs\Test.xlsx");
+                    ExcelApp.Quit();
+                }
+                catch (Exception )
+                {
+                    MessageBox.Show("Ошибка сохранения файла");
+                }
+            }
+        }
+
+        private void удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var Man = 65;
+            var Woman = 60;
+
+            for (var index = 0; index < dataGridView1.Rows.Count; index++)
+            {
+                var pol = Convert.ToString(dataGridView1.Rows[index].Cells[2].Value);
+                string m;
+
+                m = "Мужской";
+                if (pol == m)
+                {
+                    var DateOfBirth = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value);
+                    var Data = DateTime.Now.Year;
+                    var age = (Data - DateOfBirth.Year);
+                    if (DateTime.Now.Month < DateOfBirth.Month || DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day < DateOfBirth.Day)
+                    {
+                        age--;
+                    }
+                    if (age >= Man)
+                    {
+
+                        dataGridView1.Rows[index].Visible = false;
+                        if (dataGridView1.Rows[index].Index.ToString() == string.Empty)
+                        {
+                            dataGridView1.Rows[index].Cells[8].Value = RowState.Deleted;
+                            return;
+                        }
+                        dataGridView1.Rows[index].Cells[8].Value = RowState.Deleted;
+
+                    }
+                }
+                   
+                string b;
+                b = "Женский";
+                if (pol == b)
+                {
+                    var DateOfBirth = Convert.ToDateTime(dataGridView1.Rows[index].Cells[4].Value);
+                    var Data = DateTime.Now.Year;
+                    var age = (Data - DateOfBirth.Year);
+                    if (DateTime.Now.Month < DateOfBirth.Month || DateTime.Now.Month == DateOfBirth.Month && DateTime.Now.Day < DateOfBirth.Day)
+                    {
+                        age--;
+                    }
+
+                    if (age >= Woman)
+                    {
+                        dataGridView1.Rows[index].Visible = false;
+                        if (dataGridView1.Rows[index].Index.ToString() == string.Empty)
+                        {
+                            dataGridView1.Rows[index].Cells[8].Value = RowState.Deleted;
+                            return;
+                        }
+                        dataGridView1.Rows[index].Cells[8].Value = RowState.Deleted;
+                    }
+                }
+               
+            }
+
         }
     }
 }

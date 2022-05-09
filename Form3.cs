@@ -18,9 +18,38 @@ namespace MpKurs1
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public void StageTest(DateTime Postup,DateTime Now)
+        {
+            for (var index = 0; index < dataGridView1.Rows.Count; index++)
+            {
+                Postup = Convert.ToDateTime(dataGridView1.Rows[index].Cells[5].Value);
+
+                Now = DateTime.Today;
+
+                var StageWork = (Now - Postup).TotalDays;
+
+                dataGridView1.Rows[index].Cells[8].Value = StageWork;
+
+            }
+        }
+        public void Stage()
+        {
+            for (var index = 0; index < dataGridView1.Rows.Count; index++)
+            {
+                var DatePostyp = Convert.ToDateTime(dataGridView1.Rows[index].Cells[5].Value);
+
+                var TimeNow = DateTime.Today;
+
+                var StageWork = (TimeNow - DatePostyp).TotalDays;
+
+                dataGridView1.Rows[index].Cells[8].Value = StageWork;
+
+            }
+        }
+
         private void Form3_Load(object sender, EventArgs e)
         {
-           Form1 kot = new Form1();
+           Form11 kot = new Form11();
             dataGridView1.Columns.Add("Number", "№");
             dataGridView1.Columns.Add("ForName", "Фамилия");
             dataGridView1.Columns.Add("Pol", "Пол");
@@ -31,19 +60,8 @@ namespace MpKurs1
             dataGridView1.Columns.Add("Oklad", "Оклад");
             dataGridView1.Columns.Add("Stag", "Стаж работы");
             kot.RefreshDataGrid(dataGridView1);
-            for (var index = 0; index < dataGridView1.Rows.Count-1; index++)
-            {
-                var DatePostyp = Convert.ToDateTime(dataGridView1.Rows[index].Cells[5].Value);
-                
-                var TimeNow = DateTime.Today;
-
-                var StageWork = (TimeNow - DatePostyp).TotalDays;
-
-                
-                
-                dataGridView1.Rows[index].Cells[8].Value = StageWork;
-                
-            }
+              dataGridView1.AllowUserToAddRows = false;
+            Stage();
 
 
         }

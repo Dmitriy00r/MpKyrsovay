@@ -29,6 +29,5 @@ namespace MpKurs1
         {
             return sqlConnection;
         }
-
     }
 }

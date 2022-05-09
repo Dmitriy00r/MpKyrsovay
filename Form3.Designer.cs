@@ -36,11 +36,12 @@ namespace MpKurs1
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 0);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1045, 438);
+            this.dataGridView1.Size = new System.Drawing.Size(1439, 638);
             this.dataGridView1.TabIndex = 0;
             // 
             // Form3
@@ -50,7 +51,7 @@ namespace MpKurs1
             this.ClientSize = new System.Drawing.Size(1439, 638);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Стаж работы сотрудников";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

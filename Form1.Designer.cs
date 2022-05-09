@@ -1,7 +1,7 @@
 ﻿
 namespace MpKurs1
 {
-    partial class Form1
+    partial class Form11
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -43,6 +43,7 @@ namespace MpKurs1
             this.увеличитьОкладЛицамСоСтажемРаботыВышеЗаданногоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.создание2ойТаблицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,13 +82,13 @@ namespace MpKurs1
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 154);
+            this.dataGridView1.Location = new System.Drawing.Point(-14, 154);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1403, 362);
+            this.dataGridView1.Size = new System.Drawing.Size(1264, 362);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -102,7 +103,7 @@ namespace MpKurs1
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1433, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1433, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "Операции с таблицей";
             // 
@@ -113,7 +114,7 @@ namespace MpKurs1
             this.режимЗагрузкиДанныхИзСтороннегоФайлаToolStripMenuItem,
             this.сохранениеДанныхВФайлToolStripMenuItem});
             this.операцииСТаблицейToolStripMenuItem.Name = "операцииСТаблицейToolStripMenuItem";
-            this.операцииСТаблицейToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
+            this.операцииСТаблицейToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.операцииСТаблицейToolStripMenuItem.Text = "Операции с таблицей";
             // 
             // добавлениеДанныхToolStripMenuItem
@@ -135,11 +136,12 @@ namespace MpKurs1
             this.сохранениеДанныхВФайлToolStripMenuItem.Name = "сохранениеДанныхВФайлToolStripMenuItem";
             this.сохранениеДанныхВФайлToolStripMenuItem.Size = new System.Drawing.Size(411, 26);
             this.сохранениеДанныхВФайлToolStripMenuItem.Text = "Сохранение данных в файл";
+            this.сохранениеДанныхВФайлToolStripMenuItem.Click += new System.EventHandler(this.сохранениеДанныхВФайлToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(14, 26);
             // 
             // аналитикаToolStripMenuItem
             // 
@@ -149,7 +151,7 @@ namespace MpKurs1
             this.количествоСотрудниковСОкладомНижеЗаданногоToolStripMenuItem,
             this.увеличитьОкладЛицамСоСтажемРаботыВышеЗаданногоToolStripMenuItem});
             this.аналитикаToolStripMenuItem.Name = "аналитикаToolStripMenuItem";
-            this.аналитикаToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.аналитикаToolStripMenuItem.Size = new System.Drawing.Size(97, 26);
             this.аналитикаToolStripMenuItem.Text = "Аналитика";
             // 
             // стажРаботыВсехСотрудниковToolStripMenuItem
@@ -183,17 +185,25 @@ namespace MpKurs1
             // создание2ойТаблицыToolStripMenuItem
             // 
             this.создание2ойТаблицыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сToolStripMenuItem});
+            this.сToolStripMenuItem,
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem});
             this.создание2ойТаблицыToolStripMenuItem.Name = "создание2ойТаблицыToolStripMenuItem";
-            this.создание2ойТаблицыToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.создание2ойТаблицыToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.создание2ойТаблицыToolStripMenuItem.Text = "Создание 2-ой таблицы с:";
             // 
             // сToolStripMenuItem
             // 
             this.сToolStripMenuItem.Name = "сToolStripMenuItem";
-            this.сToolStripMenuItem.Size = new System.Drawing.Size(337, 26);
+            this.сToolStripMenuItem.Size = new System.Drawing.Size(471, 26);
             this.сToolStripMenuItem.Text = "Сотрудники пенсионного возраста";
             this.сToolStripMenuItem.Click += new System.EventHandler(this.сToolStripMenuItem_Click);
+            // 
+            // удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem
+            // 
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem.Name = "удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem";
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem.Size = new System.Drawing.Size(471, 26);
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem.Text = "Удалить данные о сотрудниках пенсионного возраста";
+            this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem.Click += new System.EventHandler(this.удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -421,25 +431,25 @@ namespace MpKurs1
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripComboBox1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1433, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1433, 31);
             this.toolStrip1.TabIndex = 38;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(62, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(62, 28);
             this.toolStripLabel1.Text = "Лист №";
             // 
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 31);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
-            // Form1
+            // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -473,8 +483,8 @@ namespace MpKurs1
             this.Controls.Add(this.Запись);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "Form1";
-            this.Text = "Поиск информации";
+            this.Name = "Form11";
+            this.Text = "Органайзер";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -530,6 +540,7 @@ namespace MpKurs1
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьДанныеОСотрудникахПенсионногоВозрастаToolStripMenuItem;
     }
 }
 

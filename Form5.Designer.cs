@@ -105,7 +105,7 @@ namespace MpKurs1
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "Form5";
-            this.Text = "Form5";
+            this.Text = "Увеличить оклад лицам со стажем выше заданного на введенный %";
             this.ResumeLayout(false);
             this.PerformLayout();
 

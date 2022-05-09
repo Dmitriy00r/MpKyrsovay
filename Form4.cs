@@ -12,8 +12,8 @@ namespace MpKurs1
 {
     public partial class Form4 : Form
     {
-        Form1.OkladWritting k;
-        public Form4(Form1.OkladWritting sender)
+        Form11.OkladWritting k;
+        public Form4(Form11.OkladWritting sender)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

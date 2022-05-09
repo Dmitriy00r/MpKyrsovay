@@ -40,9 +40,10 @@ namespace MpKurs1
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(83, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 29);
+            this.label1.Size = new System.Drawing.Size(86, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Отдел";
+            this.label1.Text = "Оклад";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBox1
             // 
@@ -70,7 +71,7 @@ namespace MpKurs1
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form4";
-            this.Text = "Ввод";
+            this.Text = "Количество сотрудников с окладом ниже заданного";
             this.ResumeLayout(false);
             this.PerformLayout();
 

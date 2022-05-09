@@ -127,6 +127,7 @@ namespace MpKurs1
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(386, 37);
             this.textBox1.TabIndex = 8;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // textBox2
             // 
@@ -135,6 +136,7 @@ namespace MpKurs1
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(386, 37);
             this.textBox2.TabIndex = 9;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox3
             // 
@@ -143,6 +145,7 @@ namespace MpKurs1
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(386, 37);
             this.textBox3.TabIndex = 10;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // textBox4
             // 
@@ -151,6 +154,7 @@ namespace MpKurs1
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(386, 37);
             this.textBox4.TabIndex = 11;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // textBox5
             // 
@@ -159,6 +163,7 @@ namespace MpKurs1
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(386, 38);
             this.textBox5.TabIndex = 12;
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
             // textBox6
             // 
@@ -167,6 +172,7 @@ namespace MpKurs1
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(386, 39);
             this.textBox6.TabIndex = 13;
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
             // 
@@ -175,6 +181,7 @@ namespace MpKurs1
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(386, 39);
             this.textBox7.TabIndex = 14;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // button1
             // 
@@ -209,7 +216,7 @@ namespace MpKurs1
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Add_Form";
-            this.Text = "Form2";
+            this.Text = "Добавление записи";
             this.ResumeLayout(false);
             this.PerformLayout();
 
